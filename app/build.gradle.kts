@@ -37,6 +37,16 @@ android {
 
 dependencies {
 
+    implementation(libs.koin)
+
+    implementation(libs.retrofit)
+    implementation(libs.okhttp)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
