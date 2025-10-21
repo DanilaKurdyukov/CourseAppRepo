@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseApp">
         <activity
-            android:name=".presentation.ui.AuthActivity"
+            android:name=".presentation.ui.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name=".presentation.ui.AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
