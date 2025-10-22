@@ -3,9 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.fragment.MainFragment"
     android:background="@color/dark">
 
-    
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_view_courseImage"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintWidth_percent="1"
+        app:srcCompat="@drawable/java_course"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/rating_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_courseImage"
+        app:layout_constraintStart_toStartOf="@id/image_view_courseImage"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="4.9"
+        android:textColor="@android:color/white"
+        app:chipMinHeight="28dp"
+        app:chipCornerRadius="30dp"
+        app:chipSurfaceColor="#32333A"
+        app:chipStrokeWidth="0dp"
+        app:chipIcon="@drawable/star"
+        app:chipIconTint="@color/green"
+        app:rippleColor="@android:color/transparent"
+        android:elevation="0dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/dark_gray"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_view_courseImage"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintWidth_percent="1"
+            app:srcCompat="@drawable/java_course"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!--<com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_courseRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.9"
+            app:layout_constraintBottom_toBottomOf="@id/image_view_courseImage"
+            app:layout_constraintStart_toStartOf="parent"/>-->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/rating_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/image_view_courseImage"
+            app:layout_constraintStart_toStartOf="@id/image_view_courseImage"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="4.9"
+            android:textColor="@android:color/white"
+            app:chipMinHeight="28dp"
+            app:chipCornerRadius="30dp"
+            app:chipBackgroundColor="#32333A4D"
+            app:chipStrokeWidth="0dp"
+            app:chipIcon="@drawable/star"
+            app:chipIconTint="@color/green"
+            app:rippleColor="@android:color/transparent"
+            android:elevation="0dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
