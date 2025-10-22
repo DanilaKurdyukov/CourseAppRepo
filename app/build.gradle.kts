@@ -37,12 +37,13 @@ android {
 
 dependencies {
 
-    implementation(libs.koin)
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
-    implementation(libs.retrofit)
-    implementation(libs.okhttp)
-    implementation(libs.converter.gson)
-    implementation(libs.logging.interceptor)
+    implementation(libs.viewmodel)
+
+    implementation(libs.koin.android)
+    implementation(libs.koin.core)
 
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)

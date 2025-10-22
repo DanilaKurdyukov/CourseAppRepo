@@ -37,6 +37,7 @@
             android:textColor="@color/white"/>
 
         <EditText
+            android:id="@+id/edit_text_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/RoundedEditText"
@@ -54,6 +55,7 @@
             android:textColor="@color/white"/>
 
         <EditText
+            android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/RoundedEditText"
@@ -62,6 +64,7 @@
             android:layout_marginBottom="20dp"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_signIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cornerRadius="30dp"
@@ -79,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:text="Нет аакаунта?"/>
+                android:text="Нет аккаунта?"/>
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
@@ -121,9 +124,10 @@
                 android:layout_margin="10dp"
                 app:iconGravity="textEnd"
                 app:iconPadding="0dp"
-
+                app:iconTint="@color/white"
                 app:cornerRadius="30dp"
-                android:backgroundTint="@color/blue"/>
+                app:backgroundTint="@null"
+                android:background="@drawable/vk_button_background"/>
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
