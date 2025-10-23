@@ -28,7 +28,7 @@
             android:id="@+id/image_button_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="@drawable/favorite_button_background"
             android:contentDescription="Избранное"
             android:padding="8dp"
             app:srcCompat="@drawable/favorite"
@@ -108,11 +108,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/text_view_courseTitle"
-            android:text="Освойте backend-разработку  и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании."
+            android:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании."
             android:layout_margin="10dp"
             android:textColor="@color/white"
             android:textSize="12sp"
-            android:maxLines="2"/>
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_view_coursePrice"
@@ -130,7 +131,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="Подробнее ->"
             android:textColor="@color/green"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:textSize="14sp"/>
 
 
 

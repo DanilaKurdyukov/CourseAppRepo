@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.courseapp.R
-import com.example.domain.model.Course
+import com.example.courseapp.presentation.model.CourseUI
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
 
 private const val PAYLOAD_LIKE = "payload_like"
 class CoursesAdapter(
-    private val onFavoriteClick: (Course) -> Unit
-) : ListAdapter<Course, CoursesAdapter.ViewHolder>(CourseDiff) {
+    private val onFavoriteClick: (CourseUI) -> Unit
+) : ListAdapter<CourseUI, CoursesAdapter.ViewHolder>(CourseDiff) {
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val imgCourseImage = view.findViewById<ShapeableImageView>(R.id.image_view_courseImage)
@@ -28,12 +28,13 @@ class CoursesAdapter(
 
         private val btnFavorite = view.findViewById<ImageButton>(R.id.image_button_favorite)
 
-        fun bind(item: Course) {
-            imgCourseImage.setImageResource(R.drawable.java_course)
+        fun bind(item: CourseUI) {
+
+            imgCourseImage.setImageResource(item.imageRes)
 
             txtCourseTitle.text = item.title
             txtCourseDescription.text = item.text
-            txtCoursePrice.text = item.price.toString()
+            txtCoursePrice.text = "${item.price} ₽"
             applyLike(item.hasLike)
             txtCourseRate.text = item.rate.toString()
 
@@ -68,13 +69,14 @@ class CoursesAdapter(
         }
     }
 
-    object CourseDiff : DiffUtil.ItemCallback<Course>() {
-        override fun areItemsTheSame(old: Course, new: Course) = old.id == new.id
-        override fun areContentsTheSame(old: Course, new: Course) = old == new
+    object CourseDiff : DiffUtil.ItemCallback<CourseUI>() {
+        override fun areItemsTheSame(old: CourseUI, new: CourseUI) = old.id == new.id
+        override fun areContentsTheSame(old: CourseUI, new: CourseUI) = old == new
 
-        override fun getChangePayload(oldItem: Course, newItem: Course): Any? {
+        override fun getChangePayload(oldItem: CourseUI, newItem: CourseUI): Any? {
             return if (oldItem.hasLike != newItem.hasLike) PAYLOAD_LIKE else null
         }
+
     }
 
 }
