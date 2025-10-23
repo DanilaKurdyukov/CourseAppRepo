@@ -37,6 +37,11 @@ android {
 
 dependencies {
 
+    implementation(libs.retrofit)
+    implementation(libs.okhttp)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
     implementation(project(":domain"))
     implementation(project(":data"))
 

@@ -24,6 +24,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeAppearance.AllRounded"/>
 
+        <ImageButton
+            android:id="@+id/image_button_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="Избранное"
+            android:padding="8dp"
+            app:srcCompat="@drawable/favorite"
+            app:tint="@color/white"
+            android:layout_margin="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
         <LinearLayout
             android:id="@+id/linear_layout_ratingChip"
             android:layout_width="wrap_content"

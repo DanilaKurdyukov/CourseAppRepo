@@ -5,7 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import com.example.courseapp.R
+import com.example.courseapp.presentation.adapter.CoursesAdapter
+import com.example.courseapp.presentation.vm.CourseViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
 
@@ -17,6 +24,28 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
+    private lateinit var recyclerView: RecyclerView
+    private val courseAdapter by lazy {
+        CoursesAdapter(
+            onFavoriteClick = { }
+        )
+    }
+    private val vm by viewModel<CourseViewModel>()
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recyclerView = view.findViewById(R.id.recycler_view_courses)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        recyclerView.adapter = courseAdapter
+        viewLifecycleOwner.lifecycleScope.launch {
+            vm.getCourses()
+            vm.courses.collectLatest { list ->
+                courseAdapter.submitList(list)
+            }
+        }
+    }
 
 }
