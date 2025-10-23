@@ -3,8 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/dark_gray"
-    app:cardCornerRadius="10dp">
+    android:backgroundTint="@color/dark_gray"
+    app:cardCornerRadius="20dp"
+    app:cardUseCompatPadding="true"
+    app:contentPaddingBottom="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,33 +21,103 @@
             app:srcCompat="@drawable/java_course"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.AllRounded"/>
 
-        <!--<com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_view_courseRate"
+        <LinearLayout
+            android:id="@+id/linear_layout_ratingChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4.9"
-            app:layout_constraintBottom_toBottomOf="@id/image_view_courseImage"
-            app:layout_constraintStart_toStartOf="parent"/>-->
-        <com.google.android.material.chip.Chip
-            android:id="@+id/rating_chip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/chip_background"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:gravity="center_vertical"
             app:layout_constraintBottom_toBottomOf="@id/image_view_courseImage"
             app:layout_constraintStart_toStartOf="@id/image_view_courseImage"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="4.9"
-            android:textColor="@android:color/white"
-            app:chipMinHeight="28dp"
-            app:chipCornerRadius="30dp"
-            app:chipBackgroundColor="#32333A4D"
-            app:chipStrokeWidth="0dp"
-            app:chipIcon="@drawable/star"
-            app:chipIconTint="@color/green"
-            app:rippleColor="@android:color/transparent"
-            android:elevation="0dp"/>
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                app:srcCompat="@drawable/star"
+                app:tint="@color/green" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_view_courseRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="4.9"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chip_background"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/image_view_courseImage"
+            app:layout_constraintStart_toEndOf="@id/linear_layout_ratingChip"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_view_startDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="22 Мая 2024"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_courseTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/image_view_courseImage"
+            android:text="Java-разработчик с нуля"
+            android:layout_margin="10dp"
+            style="@style/TextViewStyle"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_courseDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_view_courseTitle"
+            android:text="Освойте backend-разработку  и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании."
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:maxLines="2"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_coursePrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_view_courseDescription"
+            style="@style/TextViewStyle"
+            android:text="999"
+            android:layout_margin="10dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_view_courseDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Подробнее ->"
+            android:textColor="@color/green"
+            android:layout_margin="10dp" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
