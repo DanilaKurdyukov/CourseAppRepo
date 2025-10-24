@@ -5,6 +5,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface CourseRepository {
 
-    fun get(): Flow<Result<List<Course>>>
+    fun getRemote(): Flow<Result<List<Course>>>
 
+    fun getLocal(): Flow<Result<List<Course>>>
+
+    suspend fun insertCourse(course: Course): Result<Boolean>
 }

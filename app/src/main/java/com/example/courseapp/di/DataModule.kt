@@ -1,12 +1,14 @@
 package com.example.courseapp.di
 
-import com.example.data.network.ApiService
+import androidx.room.Room
+import com.example.data.local.DatabaseService
+import com.example.data.local.dao.CourseDAO
+import com.example.data.remote.ApiService
 import com.example.data.repository.AuthRepositoryImpl
 import com.example.data.repository.CourseRepositoryImpl
 import com.example.domain.repository.AuthRepository
 import com.example.domain.repository.CourseRepository
 import okhttp3.OkHttpClient
-import okio.Timeout
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,8 +20,22 @@ val dataModule = module {
         AuthRepositoryImpl()
     }
 
+    single {
+        Room.databaseBuilder(
+            context = get(),
+            klass = DatabaseService::class.java,
+            name = "CourseDatabase"
+        ).build()
+    }
+
+    single<CourseDAO> {
+        get<DatabaseService>().courseDao()
+    }
+
     single<CourseRepository> {
-        CourseRepositoryImpl(apiService = get())
+        CourseRepositoryImpl(
+            apiService = get(),
+            courseDAO = get())
     }
 
     single {

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.courseapp.R
@@ -29,7 +30,10 @@ class MainFragment : Fragment() {
     private lateinit var btnSort: MaterialButton
     private val courseAdapter by lazy {
         CoursesAdapter(
-            onFavoriteClick = { }
+            onFavoriteClick = { item ->
+                item.hasLike = true
+                vm.insertCourse(item)
+            }
         )
     }
     private val vm by viewModel<CourseViewModel>()

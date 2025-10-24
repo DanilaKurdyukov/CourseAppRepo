@@ -23,3 +23,14 @@ fun Course.toUi(): CourseUI = CourseUI(
     publishDate = publishDate,
     imageRes = imageById[id] ?: DEFAULT_IMG
 )
+
+fun CourseUI.toDomain(): Course = Course(
+    id = id,
+    title = title,
+    text = text,
+    price = price,
+    rate = rate,
+    startDate = startDate,
+    hasLike = hasLike,
+    publishDate = publishDate,
+)

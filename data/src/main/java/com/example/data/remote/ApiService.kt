@@ -1,6 +1,6 @@
-package com.example.data.network
+package com.example.data.remote
 
-import com.example.data.network.dto.CourseResponseDto
+import com.example.data.remote.dto.CourseResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

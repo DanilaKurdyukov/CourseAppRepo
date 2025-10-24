@@ -1,7 +1,9 @@
 package com.example.courseapp.di
 
 import com.example.domain.usecase.AuthUseCase
-import com.example.domain.usecase.GetCourseUseCase
+import com.example.domain.usecase.GetLocalCourseUseCase
+import com.example.domain.usecase.GetRemoteCourseUseCase
+import com.example.domain.usecase.InsertCourseUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -10,8 +12,16 @@ val domainModule = module {
         AuthUseCase(repository = get())
     }
 
-    single<GetCourseUseCase> {
-        GetCourseUseCase(courseRepository = get())
+    single<GetRemoteCourseUseCase> {
+        GetRemoteCourseUseCase(courseRepository = get())
+    }
+
+    single<GetLocalCourseUseCase> {
+        GetLocalCourseUseCase(courseRepository = get())
+    }
+
+    single<InsertCourseUseCase> {
+        InsertCourseUseCase(courseRepository = get())
     }
 
 }

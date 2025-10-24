@@ -2,11 +2,10 @@ package com.example.courseapp.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.courseapp.presentation.mapper.toDomain
+import com.example.courseapp.di.dataModule
 import com.example.courseapp.presentation.mapper.toUi
 import com.example.courseapp.presentation.model.CourseUI
-import com.example.domain.usecase.GetRemoteCourseUseCase
-import com.example.domain.usecase.InsertCourseUseCase
+import com.example.domain.usecase.GetLocalCourseUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -14,10 +13,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class CourseViewModel(
-    private val courseUseCase: GetRemoteCourseUseCase,
-    private val insertCourseUseCase: InsertCourseUseCase
-): ViewModel() {
+
+class FavoriteCourseViewModel(private val getLocalCourseUseCase: GetLocalCourseUseCase): ViewModel() {
 
     private val _courses = MutableStateFlow(emptyList<CourseUI>())
     val courses = _courses.asStateFlow()
@@ -27,23 +24,13 @@ class CourseViewModel(
 
     fun getCourses() {
         viewModelScope.launch {
-            courseUseCase.execute().collectLatest { result ->
+            getLocalCourseUseCase.execute().collectLatest { result ->
                 result.onSuccess { data ->
                     _courses.value = data.map { it.toUi() }
                 }.onFailure { error ->
                     _error.emit(error.message ?: "Unknown error")
                 }
             }
-        }
-    }
-
-    fun sortByPublishDateDesc() {
-       _courses.value = _courses.value.sortedByDescending { it.publishDate }
-    }
-
-    fun insertCourse(course: CourseUI) {
-        viewModelScope.launch {
-            insertCourseUseCase.execute(course.toDomain())
         }
     }
 
