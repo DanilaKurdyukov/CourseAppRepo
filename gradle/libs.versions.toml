@@ -11,6 +11,9 @@ activity = "1.11.0"
 constraintlayout = "2.2.1"
 jetbrainsKotlinJvm = "2.0.21"
 
+ksp = "2.0.21-1.0.27"
+roomRuntime = "2.6.1"
+
 
 lifecylce = "2.8.6"
 
@@ -34,6 +37,10 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+
 navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigation"}
 navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigation"}
 
@@ -54,4 +61,5 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+devtoolsKsp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
 
