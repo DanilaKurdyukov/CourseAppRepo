@@ -33,4 +33,8 @@ class CourseViewModel(private val courseUseCase: GetCourseUseCase): ViewModel() 
         }
     }
 
+    fun sortByPublishDateDesc() {
+       _courses.value = _courses.value.sortedByDescending { it.publishDate }
+    }
+
 }

@@ -22,11 +22,10 @@
         app:hintEnabled="true"
         app:shapeAppearanceOverlay="@style/SearchPill"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="Search courses..."
@@ -53,7 +52,22 @@
         android:stateListAnimator="@null"
         app:useCompatPadding="false"/>
 
-
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_sort"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_input_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:text="По дате добавления"
+        android:textAllCaps="false"
+        app:icon="@drawable/ic_arrow_down_up"
+        app:iconGravity="textEnd"
+        app:iconTint="@color/green"
+        android:textColor="@color/green"
+        android:textSize="14sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_courses"
@@ -61,9 +75,10 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_search"
+        app:layout_constraintTop_toBottomOf="@+id/button_sort"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="5dp"/>
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical"

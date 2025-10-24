@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.courseapp.R
 import com.example.courseapp.presentation.adapter.CoursesAdapter
 import com.example.courseapp.presentation.vm.CourseViewModel
+import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,6 +26,7 @@ class MainFragment : Fragment() {
     }
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var btnSort: MaterialButton
     private val courseAdapter by lazy {
         CoursesAdapter(
             onFavoriteClick = { }
@@ -35,10 +37,14 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recycler_view_courses)
+        btnSort = view.findViewById(R.id.button_sort)
     }
 
     override fun onResume() {
         super.onResume()
+        btnSort.setOnClickListener {
+            vm.sortByPublishDateDesc()
+        }
         recyclerView.adapter = courseAdapter
         viewLifecycleOwner.lifecycleScope.launch {
             vm.getCourses()
